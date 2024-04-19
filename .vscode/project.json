@@ -1,0 +1,7 @@
+{
+    "project": "unistmo-testing_informatica",
+    "sonarURL": "https://sonarcloud.io",
+    "auth": {
+        "token": "8592e1b1e30eae0d9a94ef0e07f2c8e7cd40bde3"
+    }
+}
