@@ -1,3 +1,7 @@
 {
-  "java.configuration.updateBuildConfiguration": "interactive"
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "sonarlint.connectedMode.project": {
+    "connectionId": "rmelchorv",
+    "projectKey": "rmelchorv_java-ee-2023-2024b"
+  }
 }
