@@ -24,7 +24,7 @@ public class AppTest {
     }
 
     @Test
-    public void mayorNumTest_Case2_ResultC() {
+    public void mayorNumTest_Case2_ResultA() {
         // ARRANGE
         int a = 5;
         int b = 3;
@@ -40,7 +40,7 @@ public class AppTest {
     }
 
     @Test
-    public void mayorNumTest_Case3_ResultC() {
+    public void mayorNumTest_Case3_ResultB() {
         // ARRANGE
         int a = 5;
         int b = 7;
