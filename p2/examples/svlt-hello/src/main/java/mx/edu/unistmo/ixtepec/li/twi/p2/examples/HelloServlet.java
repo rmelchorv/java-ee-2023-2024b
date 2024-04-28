@@ -2,7 +2,6 @@ package mx.edu.unistmo.ixtepec.li.twi.p2.examples;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
