@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+  <head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="icon" href="assets/img/favicon.png">
+  </head>
+<body>
+  <h2>Calculator</h2>
+
+  <form method="get" action="CalcServlet">
+    <input type="number" name="a" placeholder="First operand" min="0" value="1" required autofocus><br>
+    <input type="number" name="b" placeholder="Second operand" min="1" value="1" required><br>
+    
+    <label for="operation">Select an operation:</label><br>
+    <select name="operation" required>
+      <option value="add" selected>+</option>
+      <option value="sub">-</option>
+      <option value="mul">*</option>
+      <option value="div">/</option>
+    </select>
+    
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
