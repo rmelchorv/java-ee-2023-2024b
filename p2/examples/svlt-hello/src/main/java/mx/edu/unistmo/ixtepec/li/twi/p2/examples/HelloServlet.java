@@ -37,7 +37,7 @@ public class HelloServlet extends HttpServlet {
               "  <title>%s</title>",
               " </head>",
               " <body>",
-              "  <h1>Hello %s %s!!!! NUEVO MENSAJE</h1>",
+              "  <h1>Hello %s %s!</h1>",
               "  <h3>Request URI: %s</h3>",
               "  <h3>Context path: %s</h3>",
               "  <h3>Servlet path: %s</h3>",
