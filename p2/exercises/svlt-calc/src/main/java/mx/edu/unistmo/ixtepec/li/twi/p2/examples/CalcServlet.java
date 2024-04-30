@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.rmi.ServerException;
 import java.util.Locale;
-
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,10 +16,17 @@ public class CalcServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServerException {
     String op = req.getParameter("operation");
-    double a = Double.parseDouble(req.getParameter("a"));
-    double b = Double.parseDouble(req.getParameter("b"));
-    double result = 0.0;
+    double a;
+    double b;
+    double result;
 
+    try {
+      a = Double.parseDouble(req.getParameter("a"));
+      b = Double.parseDouble(req.getParameter("b"));
+    } catch (NumberFormatException e) {
+      a = 0;
+      b = 0;
+    }
     resp.setCharacterEncoding("UTF-8");
     resp.setContentType("text/html");
 
