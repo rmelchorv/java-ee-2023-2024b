@@ -25,7 +25,7 @@ public class CalcServlet extends HttpServlet {
       b = Double.parseDouble(req.getParameter("b"));
     } catch (NumberFormatException e) {
       a = 0;
-      b = 0;
+      b = 1;
     }
     resp.setCharacterEncoding("UTF-8");
     resp.setContentType("text/html");
@@ -47,7 +47,6 @@ public class CalcServlet extends HttpServlet {
         result = a + b;
         op = "+";
         break;
-      
     }
 
     try {
