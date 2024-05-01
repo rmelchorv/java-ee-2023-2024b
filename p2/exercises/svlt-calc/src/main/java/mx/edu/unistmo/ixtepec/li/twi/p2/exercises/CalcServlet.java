@@ -1,4 +1,4 @@
-package mx.edu.unistmo.ixtepec.li.twi.p2.examples;
+package mx.edu.unistmo.ixtepec.li.twi.p2.exercises;
 
 import java.io.IOException;
 import java.io.PrintWriter;
