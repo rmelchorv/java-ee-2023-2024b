@@ -15,19 +15,22 @@ public class HelloServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException {
+      throws ServletException, IOException {
     String fname = request.getParameter(FIRSTNAME);
     String lname = request.getParameter(LASTNAME);
 
-    if ((fname == null || fname.isBlank()) && (lname == null || lname.isBlank())) {
+    if (fname == null || fname.isBlank()) {
       fname = getServletConfig().getInitParameter(FIRSTNAME);
-      lname = getServletConfig().getInitParameter(LASTNAME);
-    }
+
+      if (lname == null || lname.isBlank())
+        lname = getServletConfig().getInitParameter(LASTNAME);
+    } else if (lname == null || lname.isBlank())
+      lname = "";
+
     response.setCharacterEncoding("UTF-8");
     response.setContentType("text/html");
 
-    try {
-      PrintWriter out = response.getWriter();
+    try (PrintWriter out = response.getWriter()) {
       String html = String.format(
           String.join("\n", "<!DOCTYPE html>",
               "<html lang=\"es-mx\">",
@@ -50,7 +53,8 @@ public class HelloServlet extends HttpServlet {
 
       out.println(html);
     } catch (IOException e) {
-      e.printStackTrace();
+      response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+      getServletContext().log("Error writing response", e);
     }
   }
 }

@@ -8,22 +8,24 @@
   <context-param>
     <param-name>connStr</param-name>
     <param-value>
-      mongodb+srv://root:%s@cluster0.bhd8hsg.mongodb.net/
-      <!--?retryWrites=true&amp;w=majority&amp;appName=Cluster0-->
+      mongodb+srv://root:%s@cluster0.bhd8hsg.mongodb.net/%s?retryWrites=true&amp;w=majority&amp;appName=Cluster0
     </param-value>
   </context-param>
   <context-param>
     <param-name>connPwd</param-name>
-    <param-value>jHimveaZkJ69ernQZ326sQ==</param-value>
-    <!--param-value>jHimveaZkJ69ernQZ326sQ==</param-value-->
+    <param-value>rmelchor</param-value>
   </context-param>
   <context-param>
-    <param-name>connPwdKey</param-name>
-    <param-value>.p455w0rd!@#1427</param-value>
+    <param-name>connDb</param-name>
+    <param-value>admin</param-value>
   </context-param>
 
   <error-page>
     <error-code>404</error-code>
-    <location>/views/error/404.html</location>
+    <location>/views/errors/404.html</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/views/errors/500.html</location>
   </error-page>
 </web-app>

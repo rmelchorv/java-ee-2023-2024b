@@ -2,8 +2,8 @@ package mx.edu.unistmo.ixtepec.li.twi.p2.exercises;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.rmi.ServerException;
 import java.util.Locale;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,7 +14,7 @@ public class CalcServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-      throws ServerException {
+      throws ServletException, IOException {
     String op = req.getParameter("operation");
     double a;
     double b;
@@ -49,8 +49,7 @@ public class CalcServlet extends HttpServlet {
         break;
     }
 
-    try {
-      PrintWriter out = resp.getWriter();
+    try (PrintWriter out = resp.getWriter()) {
       String html = String.join("\n", "<!DOCTYPE html>",
           "<html lang='es-mx'>",
           " <head>",
@@ -66,7 +65,8 @@ public class CalcServlet extends HttpServlet {
 
       out.println(html);
     } catch (IOException e) {
-      e.printStackTrace();
+      resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+      getServletContext().log("Error writing response", e);
     }
   }
 }

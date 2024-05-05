@@ -5,12 +5,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>mx.edu.unistmo.ixtepec.li</groupId>
-  <artifactId>svlt-persondb</artifactId>
+  <artifactId>svlt-dbconn</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>svlt-persondb Maven Webapp</name>
-  <url>http://localhost:8585/svlt-persondb</url>
+  <name>svlt-dbconn Maven Webapp</name>
+  <url>http://localhost:8585/svlt-dbconn</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -40,7 +40,7 @@
   </dependencies>
 
 <build>
-  <finalName>svlt-persondb</finalName>
+  <finalName>svlt-dbconn</finalName>
   <pluginManagement>    <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
     <plugins>
       <plugin>
