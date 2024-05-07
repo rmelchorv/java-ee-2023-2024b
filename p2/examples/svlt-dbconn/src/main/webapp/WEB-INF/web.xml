@@ -8,16 +8,12 @@
   <context-param>
     <param-name>connStr</param-name>
     <param-value>
-      mongodb+srv://root:%s@cluster0.bhd8hsg.mongodb.net/%s?retryWrites=true&amp;w=majority&amp;appName=Cluster0
+      mongodb+srv://root:%s@cluster0.bhd8hsg.mongodb.net/?retryWrites=true&amp;w=majority&amp;appName=Cluster0
     </param-value>
   </context-param>
   <context-param>
     <param-name>connPwd</param-name>
     <param-value>rmelchor</param-value>
-  </context-param>
-  <context-param>
-    <param-name>connDb</param-name>
-    <param-value>admin</param-value>
   </context-param>
 
   <error-page>

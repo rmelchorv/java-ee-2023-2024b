@@ -2,8 +2,9 @@ package mx.edu.unistmo.ixtepec.li.twi.p2.examples.dbconn.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Locale;
-import org.bson.Document;
+import java.util.ArrayList;
+import java.util.List;
+import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,18 +21,22 @@ public class DBConnServlet extends HttpServlet {
       throws ServletException, IOException {
     String connStr = getServletContext().getInitParameter("connStr");
     String connPwd = getServletContext().getInitParameter("connPwd");
-    String connDb = getServletContext().getInitParameter("connDb");
 
-    DBConnManager conn = new DBConnManager(
-        String.format(Locale.ROOT, connStr, connPwd), connDb);
+    DBConnManager conn = new DBConnManager(connStr, connPwd);
  
     try (PrintWriter out = response.getWriter()) {
       response.setCharacterEncoding("UTF-8");
       response.setContentType("text/html");
 
-      MongoDatabase mDB = conn.getConn();
+      StringBuilder collNames = new StringBuilder();
 
-      mDB.runCommand(new Document("ping", 1));
+      try (MongoClient client = conn.getConn()) {
+        MongoDatabase db = client.getDatabase("sample_mflix");
+        var colls = db.listCollectionNames().into(new ArrayList<>());
+
+        for (String s : colls)
+          collNames.append(s).append("<br>");
+      }
 
       String html = String.join("\n", "<!DOCTYPE html>",
           "<html lang='es-mx'>",
@@ -44,6 +49,10 @@ public class DBConnServlet extends HttpServlet {
           " <body>",
           "   <h1>" + getServletName() + "</h1>",
           "   <h2>Successfully connected to MongoDB!</h2>",
+          "   <h3>Response:</h3>",
+          "   <h4>",
+          "     <pre>" + collNames.toString() + "</pre>",
+          "   </h4>",
           " </body>",
           "</html>");
 
