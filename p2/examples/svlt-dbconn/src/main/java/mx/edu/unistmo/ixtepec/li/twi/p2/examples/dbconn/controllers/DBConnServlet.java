@@ -3,7 +3,6 @@ package mx.edu.unistmo.ixtepec.li.twi.p2.examples.dbconn.controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
 import jakarta.servlet.ServletException;

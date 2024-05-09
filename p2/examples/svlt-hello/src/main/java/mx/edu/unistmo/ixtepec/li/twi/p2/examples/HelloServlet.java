@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -27,17 +26,6 @@ public class HelloServlet extends HttpServlet {
         lname = getServletConfig().getInitParameter(LASTNAME);
     } else if (lname == null || lname.isBlank())
       lname = "";
-
-
-
-    //COOKIE DEFINITION
-    Cookie cookie = new Cookie("name", fname+lname);
-    
-    cookie.setHttpOnly(true);
-    cookie.setMaxAge(60*60*24*365);
-    response.addCookie(cookie);
-
-
 
     response.setCharacterEncoding("UTF-8");
     response.setContentType("text/html");
@@ -62,23 +50,6 @@ public class HelloServlet extends HttpServlet {
           request.getRequestURI(),
           request.getContextPath(),
           request.getServletPath());
-
-
-
-      //COOKIE READING
-      Cookie[] cookies = request.getCookies();
-
-      for(Cookie c : cookies) {
-        out.println(c.getName() + "/" + c.getValue());
-      }
-
-      //COOKIE DELETION
-      cookie = new Cookie("name", "");
-      cookie.setHttpOnly(true);
-      cookie.setMaxAge(0);
-      response.addCookie(cookie);
-
-
 
       out.println(html);
     } catch (IOException e) {
